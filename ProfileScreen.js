@@ -27,7 +27,7 @@ export default function ProfileScreen({ navigation }) {
             </View>
             <View style={styles.buttonContainer}>
                 <Button
-                title="Exit"
+                title="Sign out"
                 onPress={() => navigation.navigate('Login')}
                 />
             </View>
