@@ -21,7 +21,7 @@ export default function DetailsScreen({ navigation }) {
             </View>
             <View style={styles.buttonContainer}>
                 <Button
-                title="Exit"
+                title="Logout"
                 onPress={() => navigation.navigate('Login')}
                 />
             </View>
