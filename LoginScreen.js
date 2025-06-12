@@ -1,12 +1,24 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, Dimensions, TextInput } from 'react-native';
-import {useState} from 'react';
+import { useState, useEffect } from 'react';
+import { saveLogin, savedLogin } from '../components/SaveLogin';
 
 const windowWidth = Dimensions.get('window').width;
 
 export default function LoginScreen({ navigation }) {
     const [ user, setUser ] = useState('');
     const [ password, setPassword ] = useState('');
+
+    useEffect(() => {
+        savedLogin(navigation);
+      }, []);
+
+    const login = () => {
+        if (password === "Admin" && user === "Admin"){
+            saveLogin(user, password);
+            navigation.navigate('Home');
+        }
+    };
 
     return (
         <View style={styles.container}>
@@ -27,11 +39,7 @@ export default function LoginScreen({ navigation }) {
             <View style={styles.buttonContainer}>
                 <Button
                 title="Login"
-                onPress={() => {
-                    if (password == "Admin" && user == "Admin"){
-                        navigation.navigate('Home')
-                    }
-                }}
+                onPress={login}
                 />
             </View>
         </View>
